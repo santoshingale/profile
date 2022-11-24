@@ -1,0 +1,10 @@
+* {
+  text-decoration: none;
+  /* cursor: none; */
+  
+}
+html {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px; 
+}
