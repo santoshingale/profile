@@ -1,16 +1,11 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useSpring, animated, to } from "@react-spring/web";
 import { useGesture } from "react-use-gesture";
-
-// import imgs from "./data";
-
 import "../styles/homeStyle.css";
 
 const calcX = (y, ly) =>
-    (y - ly - window.innerHeight / 2) / 10;
-const calcY = (x, lx) => -(x - lx - window.innerWidth / 2) / 20;
-
-
+    (y - ly - window.innerHeight / 2) / 30;
+const calcY = (x, lx) => -(x - lx - window.innerWidth / 2) / 30;
 
 const HomeText = () => {
     useEffect(() => {
@@ -40,14 +35,14 @@ const HomeText = () => {
     );
 
 
-    const words = ['Santosh Ingale', '                ', '                ', '                ', '                ', 'Software Developer']
+    const words = ['Santosh Ingale', '                ', '                ', '                ','Software Developer']
 
     const { scroll } = useSpring({
         scroll: (words.length - 1) * 50,
         from: { scroll: 0 },
         // reset: true,
         reverse: flip,
-        delay: 1000,
+        delay: 6000,
         // config: { mass: 1, tension: 50, friction: 40 },
 
         onRest: () => set(!flip),
@@ -69,7 +64,15 @@ const HomeText = () => {
     );
     return (
         <div className="ontainer">
-            <h4>I am</h4>
+            <h3
+                style={{
+                    width: '100%', height: 50, fontSize: '3rem', lineHeight: 6.6,
+                    fontFamily: 'Roboto Slab serif',
+
+                }}
+            >
+                I'm
+            </h3>
             <animated.div
                 ref={domTarget}
                 className="card"
@@ -82,9 +85,6 @@ const HomeText = () => {
                     rotateY,
                     rotateZ,
                 }}>
-                {/* <h3>I am</h3> */}
-
-                {/* <>santosh</> */}
                 <animated.div
                     style={{
                         position: 'relative',
@@ -93,16 +93,22 @@ const HomeText = () => {
                         overflow: 'hidden',
                         fontSize: '1.5em',
                         // overflow: 'scroll'
+                        margin: '0vw 0'
+
                     }}
                     scrollTop={scroll}>
                     {words.map((word, i) => (
-                        <h4
+                        <h3
                             key={`${word}_${i}`}
                             style={{
-                                width: '100%', height: 50, fontSize: '3rem', lineHeight: 6.6
-                            }}>
+                                width: '100%', height: 50, fontSize: '3rem', lineHeight: 6.6,
+                                fontFamily: 'Roboto Slab serif',
+
+                            }}
+                        >
+
                             {word}
-                        </h4>
+                        </h3>
                     ))}
                 </animated.div>
             </animated.div>
@@ -111,22 +117,3 @@ const HomeText = () => {
 }
 
 export default HomeText
-
-
-// <div
-//                     style={{
-//                         position: 'relative',
-//                         width: '100%',
-//                         height: 'auto',
-//                         overflow: 'auto',
-//                         fontSize: '1.5em',
-//                     }}
-//                     >
-//                     {words.map((word, i) => (
-//                         <h4
-//                             key={`${word}_${i}`}
-//                             style={{ width: '100%', fontSize: '6rem', textAlign: 'center' }}>
-//                             {word}
-//                         </h4>
-//                     ))}
-//                 </div>
